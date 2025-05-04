@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternatifler - Sürdürülebilirlik</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f0fdf4; color: #1f3d1f; }
+        .container { padding: 20px; max-width: 1200px; margin: auto; }
+        .alternatives-title { text-align: center; margin-bottom: 30px; font-size: 24px; }
+        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .flip-container {
+            perspective: 1000px;
+            width: 22%;
+            min-width: 180px;
+            margin-bottom: 20px;
+        }
+        .flip-card {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            text-align: center;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flip-card:hover {
+            transform: rotateY(180deg);
+        }
+        .flip-front, .flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            padding: 15px;
+            font-size: 14px;
+        }
+        .flip-front {
+            background-color: #e0f7e9;
+            color: #2e7d32;
+        }
+        .flip-back {
+            background-color: #d0e8f2; /* Hafif mavi ton */
+            color: #1b5e20;
+            transform: rotateY(180deg);
+        }
+        .flip-front i, .flip-back i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .flip-front h3, .flip-back h3 {
+            margin: 10px 0 5px;
+            font-size: 16px;
+        }
+        .flip-back p, .flip-back small {
+            margin: 4px 0;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="alternatives-title">♻️ Alternatifler ve Karbon Ayak İzi Bilgileri</h1>
+    <div class="grid">
+        <!-- 1 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-glass-whiskey"></i>
+                    <h3>Plastik Şişe</h3>
+                    <p>Plastik içerir, doğada çözünmez ve deniz canlılarına zarar verir.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-wine-bottle"></i>
+                    <h3>Cam Şişe</h3>
+                    <p>Cam şişeler tekrar kullanılabilir ve geri dönüştürülebilir.</p>
+                    <small>Karbon Ayak İzi: Cam %80 daha düşük</small>
+                </div>
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3>Naylon Poşet</h3>
+                    <p>Plastik bazlıdır, toprağı kirletir ve yıllarca çözünmez.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-shopping-basket"></i>
+                    <h3>Bez Çanta</h3>
+                    <p>Yıkanabilir ve tekrar tekrar kullanılabilir.</p>
+                    <small>Doğada Zararı: Çok düşük</small>
+                </div>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Plastik Çatal</h3>
+                    <p>Plastik içerir, çöpü artırır ve kolay kırılır.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-utensil-spoon"></i>
+                    <h3>Metal Çatal</h3>
+                    <p>Uzun ömürlü, kolay temizlenir.</p>
+                    <small>Atık: Yok</small>
+                </div>
+            </div>
+        </div>
+        <!-- 4 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-mug-hot"></i>
+                    <h3>Kağıt Bardak</h3>
+                    <p>Tek kullanımlık, atık oluşturur.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Termos</h3>
+                    <p>Defalarca kullanılır, sıfır atık sağlar.</p>
+                    <small>Çevresel Etki: Çok düşük</small>
+                </div>
+            </div>
+        </div>
+        <!-- 5 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Halojen Ampul</h3>
+                    <p>Yüksek enerji tüketir ve kısa ömürlüdür.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-bolt"></i>
+                    <h3>LED Ampul</h3>
+                    <p>%85 enerji tasarrufu sağlar ve uzun ömürlüdür.</p>
+                    <small>Enerji: Çok düşük</small>
+                </div>
+            </div>
+        </div>
+        <!-- 6 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-toothbrush"></i>
+                    <h3>Plastik Diş Fırçası</h3>
+                    <p>Plastik içerir, doğada çözünmez.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Bambu Diş Fırçası</h3>
+                    <p>Doğada çözünebilir ve çevre dostudur.</p>
+                    <small>Atık: Organik</small>
+                </div>
+            </div>
+        </div>
+        <!-- 7 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Plastik Paket</h3>
+                    <p>Geri dönüşümü zordur, mikroplastik bırakır.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-box"></i>
+                    <h3>Kağıt Paket</h3>
+                    <p>Kolay geri dönüşür ve doğada çözünür.</p>
+                    <small>Çevre Etkisi: Düşük</small>
+                </div>
+            </div>
+        </div>
+        <!-- 8 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-bottle-water"></i>
+                    <h3>Pet Şişe</h3>
+                    <p>Plastik içerir ve uzun süre doğada kalır.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-water"></i>
+                    <h3>Cam Matara</h3>
+                    <p>Dayanıklı ve tekrar kullanılabilir.</p>
+                    <small>Atık: Çok düşük</small>
+                </div>
+            </div>
+        </div>
+        <!-- 9 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-box"></i>
+                    <h3>Streç Film</h3>
+                    <p>Plastik içerir, geri dönüşemez.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Balmumu Kumaş</h3>
+                    <p>Doğa dostudur, yeniden kullanılabilir.</p>
+                    <small>Çöp: Yok</small>
+                </div>
+            </div>
+        </div>
+        <!-- 10 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Sentetik Kıyafet</h3>
+                    <p>Plastik lifler içerir, mikroplastik salar.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-tree"></i>
+                    <h3>Pamuklu Kıyafet</h3>
+                    <p>Doğal liflerden üretilir.</p>
+                    <small>Doğal: Evet</small>
+                </div>
+            </div>
+        </div>
+        <!-- 11 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-car"></i>
+                    <h3>Fosil Yakıtlı Araç</h3>
+                    <p>Karbon salınımı yüksek.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Elektrikli Araç</h3>
+                    <p>Daha az karbon salınımı yapar.</p>
+                    <small>CO₂: %50 az</small>
+                </div>
+            </div>
+        </div>
+        <!-- 12 -->
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-front">
+                    <i class="fas fa-battery-full"></i>
+                    <h3>Alkali Pil</h3>
+                    <p>Ağır metaller içerir, doğaya zarar verir.</p>
+                </div>
+                <div class="flip-back">
+                    <i class="fas fa-battery-half"></i>
+                    <h3>Şarjlı Pil</h3>
+                    <p>Defalarca kullanılır, atık azaltır.</p>
+                    <small>Çöp: Az</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

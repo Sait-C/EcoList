@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sürdürülebilirlik Web Sitesi - Full Entegre</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <a onclick="showSection('home')"><i class="fas fa-home"></i> Anasayfa</a>
+        <a onclick="showSection('upload')"><i class="fas fa-upload"></i> Liste Yükle</a>
+        <a href="pages/alternatives.html"><i class="fas fa-exchange-alt"></i> Alternatifler</a>
+        <a onclick="showSection('blog')"><i class="fas fa-blog"></i> Blog</a>
+        <a onclick="showSection('profile')"><i class="fas fa-user"></i> Profil</a>
+    </div>
+
+    <div class="container">
+        <!-- ANASAYFA -->
+        <div id="home" class="section">
+            <div class="hero">
+                <h1>🌿 Sürdürülebilir Yaşam İçin İlk Adımı Atın</h1>
+                <p>Alışveriş listenizi girin, doğaya etkisini görün ve fark yaratın!</p>
+                <a class="btn" onclick="showSection('upload')">Hadi Başlayalım 🚀</a>
+            </div>
+            <div class="cards">
+                <div class="card" onclick="openInfo('dogayiKoru')">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Doğayı Koru</h3>
+                    <p>Çevreye zararlı ürünleri tespit edin ve daha sağlıklı seçimler yapın.</p>
+                </div>
+                <div class="card" onclick="openInfo('aiAnaliz')">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Analiz</h3>
+                    <p>Yapay zeka destekli analiz ile alışveriş listenizi anında değerlendirin.</p>
+                </div>
+                <div class="card" onclick="openInfo('karbonAyak')">
+                    <i class="fas fa-globe"></i>
+                    <h3>Karbon Ayak İzi</h3>
+                    <p>Karbon ayak izinizi görüntüleyin ve azaltma yollarını keşfedin.</p>
+                </div>
+                <div class="card" onclick="openInfo('geriDonusum')">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Geri Dönüşüm</h3>
+                    <p>Evde basit geri dönüşüm tüyoları ile başlayın.</p>
+                </div>
+                <div class="card" onclick="openInfo('suTasarrufu')">
+                    <i class="fas fa-tint"></i>
+                    <h3>Su Tasarrufu</h3>
+                    <p>Su tüketiminizi azaltmak için basit adımlar öğrenin.</p>
+                </div>
+                <div class="card" onclick="openInfo('dogalUrun')">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Doğa Dostu Ürünler</h3>
+                    <p>Çevreye zarar vermeyen ürünlerle yaşam tarzınızı geliştirin.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload -->
+        <div id="upload" class="section hidden upload-section">
+            <h2>📝 Alışveriş Listenizi Girin</h2>
+            <textarea id="listInput" rows="6" placeholder="Örn: Plastik şişe, Cips, Naylon poşet"></textarea>
+            <button class="btn2" onclick="aiAnalyze()">AI ile Analiz Et</button>
+            <div id="aiFeedback" class="ai-feedback hidden"></div>
+
+            <!-- Modal for AI Alternative -->
+            <div id="alternativeModal" class="modal">
+                <div class="modal-content">
+                    <span onclick="closeModal()" class="close">&times;</span>
+                    <h3>🌿 Çevre Dostu Öneri</h3>
+                    <p id="alternativeContent">Öneriler buraya gelecek.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Info Cards -->
+        <div id="infoModal" class="modal">
+            <div class="modal-content">
+                <span onclick="closeModal()" class="close">&times;</span>
+                <h3 id="modalTitle">Bilgi</h3>
+                <p id="modalText">Açıklama buraya gelecek.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
