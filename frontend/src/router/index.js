@@ -16,11 +16,6 @@ const homeChildRoutes = [
     name: "analysis-result",
     component: () => import("../pages/AnalysisResult.vue"),
   },
-  {
-    path: "alternatifler",
-    name: "alternatives",
-    component: () => import("../pages/AlternativesPage.vue"),
-  },
 ];
 
 const routes = [

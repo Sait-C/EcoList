@@ -1,42 +1,88 @@
 <template>
   <div class="analysis-result">
-    <section class="hero">
-      <div>
-        <h1>Alışveriş Listenizin Etkisini Analiz Edin</h1>
-        <p>Bu platformda alışveriş listenizin çevresel etkisini analiz edebilir, daha sürdürülebilir seçimler yapabilirsiniz.</p>
-        <router-link to="/liste-yukle" class="btn">Hemen Başla</router-link>
+    <div class="analysis-container">
+      <div class="analysis-list">
+        <h2>Analiz Detayları</h2>
+        <AnalysisListItem
+          v-for="item in analysisItems"
+          :key="item.id"
+          :id="item.id"
+          :title="item.title"
+          :description="item.description"
+          :status="item.status"
+          :selected="selectedItemId === item.id"
+          @select="handleSelect"
+        />
       </div>
-      <BrandLogo />
-    </section>
-    <section class="cards">
-      <div class="card">
-        <h3>Toplam Karbon Ayak İzi</h3>
-        <div>Yaklaşık 23 kg CO₂ salınımı</div>
-      </div>
-      <div class="card">
-        <h3>En Çok Zarar Veren Ürün</h3>
-        <div>Sığır Eti</div>
-        <div>15 kg CO₂ / kg</div>
-      </div>
-    </section>
-    <section class="cards">
-      <div class="card">
-        <h3>Sürdürülebilir Alternatifler</h3>
-        <div style="display:flex;align-items:center;gap:2em;">
-          <div><img src="@/assets/images/logo.png" style="width:40px;"/> %0 daha az atik</div>
-          <div><img src="@/assets/images/logo.png" style="width:40px;"/> %90 daha az atik</div>
+      
+      <div class="analysis-content">
+        <h1>Analiz Sonucu</h1>
+        <div class="node-map">
+          <NodeComponent :nodes="nodes" />
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup>
-import BrandLogo from '@/components/custom/logo/BrandLogo.vue';
+import { ref } from 'vue';
+import NodeComponent from '@/components/node/NodeComponent.vue';
+import AnalysisListItem from '@/components/analysis/AnalysisListItem.vue';
+
+const selectedItemId = ref(null);
+
+const handleSelect = (id) => {
+  selectedItemId.value = id === selectedItemId.value ? null : id;
+};
+
+const nodes = ref([
+  {
+    id: 1,
+    title: 'Cam Şişe',
+    topics: ['Çevresel Zararlar', 'Geri Dönüşümü', 'Üretim Maliyeti'],
+    connections: [
+      { id: 1, targetId: 2 }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Plastik Şişe',
+    topics: ['Çevresel Zararlar', 'Geri Dönüşümü', 'Üretim Maliyeti'],
+    connections: [
+      { id: 2, targetId: 3 }
+    ]
+  },
+]);
+
+const analysisItems = ref([
+  {
+    id: 1,
+    title: 'Plastik Şişe',
+    description: 'Listenizde bulunan ürünlerin %75\'i geri dönüştürülebilir malzemelerden oluşuyor.',
+    status: 'success'
+  },
+  {
+    id: 2,
+    title: 'Naylon Poşet',
+    description: 'Seçilen ürünlerin karbon ayak izi ortalamanın üzerinde. Alternatif ürünler önerildi.',
+    status: 'error'
+  },
+]);
 </script>
 
 <style lang="scss" scoped>
-.analysis-result { max-width: 900px; margin: 2em auto; }
-.hero { display: flex; align-items: center; justify-content: space-between; padding: 2em 0; }
-.cards { display: flex; gap: 2em; margin-top: 2em; }
-</style> 
+.analysis-result {
+  padding: 2rem;
+}
+
+.node-map {
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  position: relative;
+  border-radius: 16px;
+  margin: 2rem auto;
+  overflow: visible;
+}
+</style>

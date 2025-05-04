@@ -9,7 +9,6 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 const toastOptions = { timeout: 3000 };
 
-
 // Custom Components & Directives
 import globalComponent from "./plugins/global-components";
 
