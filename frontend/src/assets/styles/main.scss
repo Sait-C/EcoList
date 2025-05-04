@@ -1,0 +1,28 @@
+@import './variables';
+
+body {
+  font-family: $font-family;
+  background: #fafcfb;
+  color: $text;
+  margin: 0;
+}
+
+button, .btn {
+  background: $primary;
+  color: #fff;
+  border: none;
+  border-radius: $border-radius;
+  padding: 0.7em 2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover { background: darken($primary, 10%); }
+}
+
+.card {
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+} 
