@@ -1,19 +1,40 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../pages/HomePage.vue'
-import UploadList from '../pages/UploadList.vue'
-import AnalysisResult from '../pages/AnalysisResult.vue'
-import Alternatives from '../pages/AlternativesPage.vue'
+import { createRouter, createWebHistory } from "vue-router";
+
+const homeChildRoutes = [
+  {
+    path: "",
+    name: "index",
+    component: () => import("../pages/HomePage.vue"),
+  },
+  {
+    path: "liste-yukle",
+    name: "upload-list",
+    component: () => import("../pages/UploadList.vue"),
+  },
+  {
+    path: "analiz-sonucu",
+    name: "analysis-result",
+    component: () => import("../pages/AnalysisResult.vue"),
+  },
+  {
+    path: "alternatifler",
+    name: "alternatives",
+    component: () => import("../pages/AlternativesPage.vue"),
+  },
+];
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
-  { path: '/liste-yukle', name: 'UploadList', component: UploadList },
-  { path: '/analiz-sonucu', name: 'AnalysisResult', component: AnalysisResult },
-  { path: '/alternatifler', name: 'Alternatives', component: Alternatives },
-]
+  {
+    path: "",
+    name: "home",
+    component: () => import("../layouts/main/MainLayout"),
+    children: homeChildRoutes,
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
-export default router 
+export default router;

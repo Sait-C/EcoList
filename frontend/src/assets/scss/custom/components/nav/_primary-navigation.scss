@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: $background-white;
+  box-shadow: 0 2px 4px $shadow-color;
+  font-family: $font-family-primary-regular;
+  .logo {
+    font-size: 1.75rem;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: $text-primary;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+  
+    &:hover {
+      color: $primary-green;
+    }
+  }
+}

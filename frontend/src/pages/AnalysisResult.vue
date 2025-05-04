@@ -6,7 +6,7 @@
         <p>Bu platformda alışveriş listenizin çevresel etkisini analiz edebilir, daha sürdürülebilir seçimler yapabilirsiniz.</p>
         <router-link to="/liste-yukle" class="btn">Hemen Başla</router-link>
       </div>
-      <img src="@/assets/logo.png" alt="Earth" style="width:180px;" />
+      <BrandLogo />
     </section>
     <section class="cards">
       <div class="card">
@@ -23,13 +23,17 @@
       <div class="card">
         <h3>Sürdürülebilir Alternatifler</h3>
         <div style="display:flex;align-items:center;gap:2em;">
-          <div><img src="@/assets/logo.png" style="width:40px;"/> %0 daha az atik</div>
-          <div><img src="@/assets/logo.png" style="width:40px;"/> %90 daha az atik</div>
+          <div><img src="@/assets/images/logo.png" style="width:40px;"/> %0 daha az atik</div>
+          <div><img src="@/assets/images/logo.png" style="width:40px;"/> %90 daha az atik</div>
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<script setup>
+import BrandLogo from '@/components/custom/logo/BrandLogo.vue';
+</script>
 
 <style lang="scss" scoped>
 .analysis-result { max-width: 900px; margin: 2em auto; }

@@ -1,0 +1,61 @@
+.upload-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: $font-family-primary-regular;
+  h1 {
+    font-size: 2.5rem;
+    color: $text-primary;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: $text-secondary;
+    margin-bottom: 3rem;
+  }
+
+  .upload-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .analyze-btn {
+      background: $primary-green;
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: $border-radius;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+
+      &:hover:not(:disabled) {
+        background: darken($primary-green, 5%);
+      }
+
+      &:disabled {
+        background: $grey;
+        cursor: not-allowed;
+      }
+    }
+  }
+} 

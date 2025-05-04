@@ -1,0 +1,234 @@
+.home {
+  font-family: $font-family-primary-regular;
+  color: $text-primary;
+  background-color: $background-light;
+  min-height: 100vh;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: $background-white;
+    box-shadow: 0 2px 4px $shadow-color;
+  }
+
+  .logo {
+    font-size: 1.75rem;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: $text-primary;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $primary-green;
+    }
+  }
+
+  .hero {
+    display: flex;
+    padding: 6rem 4rem;
+    align-items: center;
+    gap: 6rem;
+    background: $background-white;
+  }
+
+  .hero-content {
+    flex: 1;
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: $text-secondary;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .earth-illustration {
+    width: 400px;
+    height: 400px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .primary-button {
+    background: $primary-green;
+    color: $background-white;
+    border: none;
+    padding: 1.25rem 2.5rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+
+    &:hover {
+      background: $primary-green-dark;
+      transform: translateY(-2px);
+    }
+  }
+
+  .analysis-section, .alternatives-section {
+    padding: 6rem 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .analysis-content {
+    display: flex;
+    gap: 4rem;
+    margin-top: 2rem;
+  }
+
+  .carbon-footprint, .impact-analysis {
+    flex: 1;
+    background: $background-white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px $shadow-color;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: $text-primary;
+  }
+
+  .chart {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .pie-chart {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slice-1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $primary-green;
+    transform-origin: 50% 50%;
+    transform: rotate(0deg);
+  }
+
+  .slice-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $primary-green-dark;
+    transform-origin: 50% 50%;
+    transform: rotate(270deg);
+  }
+
+  .product-impact {
+    background: $primary-green-light;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .product-icons {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+
+    span {
+      margin: 0 0.5rem;
+    }
+  }
+
+  .alternatives-content {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .alternative-item {
+    text-align: center;
+    padding: 2rem;
+    background: $background-white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px $shadow-color;
+    width: 300px;
+  }
+
+  .bottle-comparison {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .disposable-bottle, .reusable-bottle {
+    width: 60px;
+    height: 100px;
+    background: $grey;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .reusable-bottle {
+    background: $primary-green;
+  }
+
+  @media (max-width: 1024px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .earth-illustration {
+      width: 300px;
+      height: 300px;
+    }
+
+    .analysis-content {
+      flex-direction: column;
+    }
+
+    .navbar {
+      padding: 1rem 2rem;
+    }
+
+    .nav-links {
+      display: none;
+    }
+  }
+}

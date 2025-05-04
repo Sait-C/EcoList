@@ -1,37 +1,62 @@
 <template>
   <div class="upload-list">
     <h1>Liste Yükle</h1>
-    <p>Alışveriş listenizi yükleyin veya aşağıya girin</p>
-    <div class="upload-section">
-      <div class="file-upload card">
-        <div style="text-align:center;">
-          <div style="font-size:3em;">📄</div>
-          <button class="btn">Dosya Seç</button>
-        </div>
-      </div>
-      <div class="manual-entry card">
-        <b>Listeyi manuel gir</b>
-        <ul>
-          <li>Süt</li>
-          <li>Domates</li>
-          <li>Kot Pantolon</li>
-        </ul>
-      </div>
+    <p class="subtitle">Alışveriş listenizi yükleyin veya aşağıya girin</p>
+    
+    <div class="upload-container">
+      <FileUploadCard @file-selected="handleFileSelect" />
+      <ManualEntryCard @list-updated="handleListUpdate" />
     </div>
-    <div style="margin:2em 0;">
-      <label>Kategori seçin:</label>
-      <select>
-        <option>Gıda</option>
-        <option>Giyim</option>
-        <option>Elektronik</option>
-      </select>
+
+    <div class="controls">
+      <LanguageSelect @language-changed="handleLanguageChange" />
+      <button 
+        class="analyze-btn" 
+        @click="analyze"
+        :disabled="!canAnalyze"
+      >
+        Analiz Et
+      </button>
     </div>
-    <button class="btn">Analiz Et</button>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.upload-list { max-width: 700px; margin: 2em auto; text-align: center; }
-.upload-section { display: flex; gap: 2em; justify-content: center; margin: 2em 0; }
-.file-upload, .manual-entry { flex: 1; min-width: 220px; }
-</style> 
+<script setup>
+import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import FileUploadCard from '@/components/upload/FileUploadCard.vue';
+import ManualEntryCard from '@/components/upload/ManualEntryCard.vue';
+import LanguageSelect from '@/components/common/LanguageSelect.vue';
+
+const router = useRouter();
+
+const selectedFile = ref(null);
+const manualList = ref([]);
+const selectedLanguage = ref('tr');
+
+const canAnalyze = computed(() => {
+  return selectedFile.value || manualList.value.length > 0;
+});
+
+const handleFileSelect = (file) => {
+  selectedFile.value = file;
+};
+
+const handleListUpdate = (list) => {
+  manualList.value = list;
+};
+
+const handleLanguageChange = (lang) => {
+  selectedLanguage.value = lang;
+};
+
+const analyze = async () => {
+  try {
+    // TODO: Implement API call to analyze the list
+    // For now, just navigate to the analysis page
+    router.push('/analiz-sonucu');
+  } catch (error) {
+    console.error('Analysis failed:', error);
+  }
+};
+</script>

@@ -1,13 +1,29 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/styles/main.scss'
-import Toast from 'vue-toastification'
-import 'vue-toastification/dist/index.css'
-import router from './router'
-import store from './store'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 
-const app = createApp(App)
-app.use(Toast)
-app.use(router)
-app.use(store)
-app.mount('#app')
+import "./registerServiceWorker";
+
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+const toastOptions = { timeout: 3000 };
+
+
+// Custom Components & Directives
+import globalComponent from "./plugins/global-components";
+
+const app = createApp(App);
+
+app.use(store);
+app.use(router);
+
+//Library Components
+app.use(Toast, toastOptions);
+
+// Custom Components & Directives
+app.use(globalComponent);
+
+app.mount("#app");
+
+export default app;

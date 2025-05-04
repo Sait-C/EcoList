@@ -1,0 +1,23 @@
+.language-select {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  label {
+    color: $text-primary;
+    font-weight: 500;
+  }
+
+  select {
+    padding: 0.5rem 1rem;
+    border: 1px solid $grey;
+    border-radius: $border-radius;
+    background: white;
+    min-width: 150px;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-green;
+    }
+  }
+} 
