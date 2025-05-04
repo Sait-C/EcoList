@@ -25,6 +25,8 @@ const productsSchema = z.object({
       reason: z.string(),
       sustainabilityScore: z.number().min(1).max(10),
       environmentalImpact: z.string().optional(),
+      imagePrompt: z.string(),
+      imageBase64: z.string().optional(),
     }))
   }))
 });
