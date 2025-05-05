@@ -9,7 +9,7 @@
           <button class="primary-button">Hemen Başla</button>
         </div>
         <div class="hero-image">
-          <img src="@/assets/earth-icon.svg" alt="Earth illustration" class="earth-illustration" />
+          <img src="@/assets/earth-list.svg" alt="Earth and checklist illustration" class="earth-illustration" />
         </div>
       </section>
 
