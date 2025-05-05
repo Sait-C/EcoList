@@ -1,34 +1,28 @@
-// Colors
 $grey: #929292;
 
-// Brand Colors
-$primary-green: #7B9B7B;      // Main green color for buttons and accents
-$primary-green-dark: #5C785C; // Darker green for hover states
-$primary-green-light: #E8F5E9; // Light green for backgrounds
-$text-primary: #2D3B2D;      // Main text color
-$text-secondary: #4A5D4A;    // Secondary text color
-$background-white: #FFFFFF;   // Pure white background
-$background-light: #FAFAFA;   // Light gray background
+$primary-green: #7B9B7B;
+$primary-green-dark: #5C785C;
+$primary-green-light: #E8F5E9;
+$text-primary: #2D3B2D;
+$text-secondary: #4A5D4A;
+$background-white: #FFFFFF;
+$background-light: #FAFAFA;
 $background-light-beige: #fefdf8;
-$shadow-color: rgba(0, 0, 0, 0.04); // Shadow color for cards
+$shadow-color: rgba(0, 0, 0, 0.04);
 
-// Update existing colors to use new variables
 $primary: $primary-green;
 $secondary: $primary-green-light;
 $text: $text-primary;
 
-// Font weights
 $font-weight-regular:   400;
 $font-weight-semi-bold: 500;
 $font-weight-bold:      700;
 
-// Font families
 $font-family-primary-regular: 'Inter-Regular', sans-serif;
 $font-family-primary-medium: 'Inter-Medium', sans-serif;
 $font-family-primary-thin: 'Inter-Thin', sans-serif;
 $font-family-primary-extra-light: 'Inter-ExtraLight', sans-serif;
 
-// Sizes
 $fluid-screen: 100vw;
 $fluid-bp: calc(($fluid-screen - 20rem) / 2240);
 $step--2: calc(0.730625rem + 2.85 * $fluid-bp);
@@ -74,7 +68,6 @@ $space-2xl-6xl: calc(4rem + 200 * $fluid-bp);
 $space-3xl-6xl: calc(6rem + 168 * $fluid-bp);
 $space-4xl-6xl: calc(8rem + 136 * $fluid-bp);
 
-// Font sizes
 $font-size-xxs: calc($space-3xs-2xs + 0.1rem);
 $font-size-xs: calc($space-2xs-xs + 0.1rem);
 $font-size-s: $space-xs-s;
@@ -84,7 +77,6 @@ $font-size-xl: $space-l-xl;
 $font-size-xxl: $space-xl-2xl;
 $font-size-3xl: $space-2xl-3xl;
 
-// Space sizes
 $space-size-xxs: $space-3xs-2xs;
 $space-size-xs: $space-xs-s;
 $space-size-s: $space-s-m;
