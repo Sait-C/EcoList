@@ -42,20 +42,41 @@
             </div>
           </div>
 
-          <div class="how-it-works">
+          <div class="how-it-works-modern">
             <h3>Nasıl Çalışır?</h3>
-            <div class="steps">
-              <div class="step">
-                <div class="step-number">1</div>
-                <p>Alışveriş listenizi girin</p>
+            <div class="hiw-cards">
+              <div class="hiw-card">
+                <div class="hiw-step-circle">1</div>
+                <div class="hiw-emoji">📝</div>
+                <div class="hiw-title">Alışveriş Listenizi Girin</div>
+                <div class="hiw-desc">Günlük alışveriş listenizi kolayca ekleyin veya geçmiş listelerinizi yükleyin</div>
+                <div class="hiw-badges">
+                  <span>🖊️ Manuel Giriş</span>
+                  <span>📷 Barkod Tarama</span>
+                  <span>📂 Geçmiş Listeler</span>
+                </div>
               </div>
-              <div class="step">
-                <div class="step-number">2</div>
-                <p>Çevresel etki analizini görün</p>
+              <div class="hiw-card">
+                <div class="hiw-step-circle">2</div>
+                <div class="hiw-emoji">🔍</div>
+                <div class="hiw-title">Detaylı Analiz</div>
+                <div class="hiw-desc">Yapay zeka destekli sistemimiz listenizi analiz eder ve çevresel etkisini hesaplar</div>
+                <div class="hiw-badges">
+                  <span>🌱 Karbon Ayak İzi</span>
+                  <span>💧 Su Tüketimi</span>
+                  <span>🗑️ Atık Miktarı</span>
+                </div>
               </div>
-              <div class="step">
-                <div class="step-number">3</div>
-                <p>Sürdürülebilir alternatifleri keşfedin</p>
+              <div class="hiw-card">
+                <div class="hiw-step-circle">3</div>
+                <div class="hiw-emoji">🌍</div>
+                <div class="hiw-title">Sürdürülebilir Alternatifler</div>
+                <div class="hiw-desc">Kişiselleştirilmiş öneriler ve çevre dostu alternatifler sunulur</div>
+                <div class="hiw-badges">
+                  <span>🔄 Ürün Değişimleri</span>
+                  <span>💰 Tasarruf Hesaplaması</span>
+                  <span>📊 Etki Karşılaştırması</span>
+                </div>
               </div>
             </div>
           </div>
@@ -483,57 +504,109 @@ p {
   margin-bottom: 1rem;
 }
 
-.how-it-works {
-  text-align: center;
+.how-it-works-modern {
   margin-top: 4rem;
+  text-align: center;
 }
 
-.steps {
+.how-it-works-modern h3 {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #222;
+}
+
+.hiw-cards {
   display: flex;
   justify-content: center;
-  gap: 3rem;
-  margin-top: 2rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
-.step {
+.hiw-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 2.2rem 1.5rem 1.7rem 1.5rem;
+  max-width: 320px;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 200px;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-.step-number {
-  width: 40px;
-  height: 40px;
+.hiw-card:hover {
+  transform: translateY(-5px);
+}
+
+.hiw-step-circle {
+  width: 38px;
+  height: 38px;
   background: #4CAF50;
-  color: white;
+  color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.10);
+  border: 3px solid #fff;
 }
 
-@media (max-width: 768px) {
-  .steps {
+.hiw-emoji {
+  font-size: 2.2rem;
+  margin: 1.2rem 0 0.7rem 0;
+}
+
+.hiw-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.hiw-desc {
+  color: #666;
+  font-size: 1.01rem;
+  margin-bottom: 1.1rem;
+  min-height: 48px;
+}
+
+.hiw-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.hiw-badges span {
+  background: #f5f5f5;
+  color: #333;
+  border-radius: 8px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.97rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .hiw-cards {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
   }
-  
-  .goal-card {
-    margin: 0 1rem;
-  }
-
-  .alternatives-content {
-    grid-template-columns: 1fr;
-  }
-
-  .earth-illustration {
-    max-width: 300px;
+  .hiw-card {
+    max-width: 95vw;
+    min-width: 0;
   }
 }
 
