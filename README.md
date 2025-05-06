@@ -139,7 +139,7 @@ This project is licensed under the ISC License - see the LICENSE file for detail
 
 ## 📬 Contact
 
-- Project Link: [https://github.com/yourusername/yzta-jam](https://github.com/yourusername/yzta-jam)
+- Project Link: [https://github.com/Sait-C/EcoList/](https://github.com/Sait-C/EcoList/)
 
 ---
 
