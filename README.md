@@ -1,10 +1,12 @@
-# YZTA-JAM: Sustainable Shopping Assistant
+# EcoList: Sustainable Shopping Assistant
 
 ![Banner Image](frontend/src/assets/images/earth.png)
 
 ## 🌱 Project Overview
 
-YZTA-JAM is a sustainable shopping assistant that helps users analyze their shopping lists and provides eco-friendly alternatives. The application uses AI to evaluate the environmental impact of shopping choices and suggests more sustainable options.
+EcoList is a sustainable shopping assistant that helps users analyze their shopping lists and provides eco-friendly alternatives. The application uses AI to evaluate the environmental impact of shopping choices and suggests more sustainable options.
+
+(* This project was developed within the Google Artificial Intelligence and Technology Academy Hackathon)
 
 ## ✨ Features
 
@@ -137,7 +139,7 @@ This project is licensed under the ISC License - see the LICENSE file for detail
 
 ## 📬 Contact
 
-- Project Link: [https://github.com/yourusername/yzta-jam](https://github.com/yourusername/yzta-jam)
+- Project Link: [https://github.com/Sait-C/EcoList/](https://github.com/Sait-C/EcoList/)
 
 ---
 
