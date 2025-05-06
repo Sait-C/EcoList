@@ -2,6 +2,9 @@ const asyncHandler = require("../middleware/async");
 const ErrorResponse = require("../utils/errorResponse");
 const { aiService } = require("../services/ai/LangchainService");
 
+// @desc Analyze products list
+// @route POST /api/v1/ai/analyze-list
+// @access Public
 exports.analyzeProductsList = asyncHandler(async (req, res, next) => {
   const productsList = req.body?.productsList;
   const language = req.query.lang || 'en';
@@ -23,6 +26,9 @@ exports.analyzeProductsList = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc Create information tree
+// @route POST /api/v1/ai/create-information-tree
+// @access Public
 exports.createInformationTree = asyncHandler(async (req, res, next) => {
   const { name, topic } = req.body;
   const language = req.query.lang || 'en';

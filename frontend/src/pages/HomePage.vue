@@ -62,34 +62,6 @@
         </div>
       </section>
 
-      <section class="analysis-section">
-        <h2>Analiz Sonucu</h2>
-        <div class="analysis-content">
-          <div class="carbon-footprint">
-            <h3>Toplam Karbon Ayak İzi</h3>
-            <div class="chart">
-              <div class="pie-chart">
-                <div class="slice-1"></div>
-                <div class="slice-2"></div>
-              </div>
-            </div>
-            <p>Yaklaşık 23 kg CO₂ salınımı</p>
-          </div>
-          
-          <div class="impact-analysis">
-            <h3>En Çok Zarar Veren Ürün</h3>
-            <div class="product-impact">
-              <div class="product-icons">
-                <span class="meat-icon">🥩</span>
-                <span class="carrot-icon">🥕</span>
-              </div>
-              <h4>Sığır Eti</h4>
-              <p>15 kg CO₂ / kg</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="alternatives-section">
         <h2>Sürdürülebilir Alternatifler</h2>
         <div class="alternatives-content">

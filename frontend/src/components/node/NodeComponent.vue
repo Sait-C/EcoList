@@ -29,34 +29,18 @@
       :style="{ left: node.x + 'px', top: node.y + 'px' }"
       @mousedown="startDragging(node, $event)"
     >
-      <div class="node-content">
-        <div class="node-icon">
-          <slot name="icon" :node="node">
-            <div class="default-icon"></div>
-          </slot>
-        </div>
-      </div>
-      <div class="node-title">{{ node.title }}</div>
-      
-      <div class="topics-container">
-        <div 
-          v-for="(topic, index) in node.topics" 
-          :key="index"
-          class="topic-box"
-          :style="{
-            left: `${calculateTopicPosition(index, node.topics.length)}px`,
-            animationDelay: `${index * 0.1}s`
-          }"
-        >
-          {{ topic }}
-        </div>
-      </div>
+      <ContentNode 
+        :title="node.title"
+        :content="node.content || ''"
+        :card-count="node.cardCount || 0"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, defineProps, onUnmounted, computed, onMounted } from 'vue';
+import ContentNode from './ContentNode.vue';
 
 const props = defineProps({
   nodes: {
@@ -194,6 +178,10 @@ onUnmounted(() => {
 }
 
 .node {
+  position: absolute;
+  width: 300px;
+  cursor: move;
+  z-index: 3;
   .topics-container {
     position: absolute;
     top: 100%;

@@ -3,60 +3,111 @@
     <h1>Liste Yükle</h1>
     <p class="subtitle">Alışveriş listenizi yükleyin veya aşağıya girin</p>
     
-    <div class="upload-container">
-      <FileUploadCard @file-selected="handleFileSelect" />
-      <ManualEntryCard @list-updated="handleListUpdate" />
-    </div>
+    <form @submit.prevent="handleSubmit" id="upload-form">
+      <div class="upload-container">
+        <FileUploadCard @file-selected="handleFileSelect" />
+        <ManualEntryCard @list-updated="handleListUpdate" />
+      </div>
 
-    <div class="controls">
-      <LanguageSelect @language-changed="handleLanguageChange" />
-      <button 
-        class="analyze-btn" 
-        @click="analyze"
-        :disabled="!canAnalyze"
-      >
-        Analiz Et
-      </button>
-    </div>
+      <div class="controls">
+        <LanguageSelect @language-changed="handleLanguageChange" />
+        <button 
+          type="submit"
+          class="analyze-btn" 
+          :disabled="!canAnalyze || isAnalyzing"
+        >
+          <span v-if="!isAnalyzing">Analiz Et</span>
+          <span v-else>Analiz Ediliyor...</span>
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import { useToast } from 'vue-toastification';
+import { useAsyncState } from '@vueuse/core';
+import useVuelidate from '@vuelidate/core';
+import { helpers } from '@vuelidate/validators';
 import FileUploadCard from '@/components/upload/FileUploadCard.vue';
 import ManualEntryCard from '@/components/upload/ManualEntryCard.vue';
 import LanguageSelect from '@/components/common/LanguageSelect.vue';
 
 const router = useRouter();
+const store = useStore();
+const toast = useToast();
 
-const selectedFile = ref(null);
-const manualList = ref([]);
-const selectedLanguage = ref('tr');
+const formData = reactive({
+  file: null,
+  manualList: [],
+  language: 'tr'
+});
+
+// Validation rules
+const rules = {
+  file: {
+    required: helpers.withMessage(
+      'Please upload a file or enter items manually',
+      helpers.withParams({}, (value) => value || formData.manualList.length > 0)
+    )
+  },
+  manualList: {
+    required: helpers.withMessage(
+      'Please upload a file or enter items manually',
+      helpers.withParams({}, (value) => value.length > 0 || formData.file)
+    )
+  }
+};
+
+// Initialize Vuelidate
+const v$ = useVuelidate(rules, formData);
 
 const canAnalyze = computed(() => {
-  return selectedFile.value || manualList.value.length > 0;
+  return formData.file || formData.manualList.length > 0;
 });
 
 const handleFileSelect = (file) => {
-  selectedFile.value = file;
+  formData.file = file;
+  formData.manualList = []; // Clear manual list when file is selected
 };
 
 const handleListUpdate = (list) => {
-  manualList.value = list;
+  formData.manualList = list;
+  formData.file = null; // Clear file when manual list is updated
 };
 
 const handleLanguageChange = (lang) => {
-  selectedLanguage.value = lang;
+  formData.language = lang;
 };
 
-const analyze = async () => {
-  try {
-    // TODO: Implement API call to analyze the list
-    // For now, just navigate to the analysis page
-    router.push('/analiz-sonucu');
-  } catch (error) {
-    console.error('Analysis failed:', error);
-  }
-};
+// Submit form action
+const { isLoading: isAnalyzing, execute: handleSubmit } = useAsyncState(
+  async () => {
+    const result = await v$.value.$validate();
+    
+    if (!result) {
+      toast.error('Lütfen bir dosya yükleyin veya listeyi manuel olarak girin');
+      return;
+    }
+
+    try {
+      await store.dispatch('ai/analyzeProductListAxios', {
+        file: formData.file,
+        items: formData.manualList,
+        language: formData.language
+      });
+      
+      router.push('/analiz-sonucu');
+      toast.success('Liste başarıyla analiz edildi');
+    } catch (error) {
+      toast.error(`Analiz başarısız: ${error.message}`);
+      console.error('Analysis failed:', error);
+    }
+  },
+  null,
+  { immediate: false }
+);
 </script>

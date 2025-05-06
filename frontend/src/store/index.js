@@ -1,17 +1,15 @@
-import { createStore } from 'vuex'
+import { createStore, createLogger } from "vuex";
+
+import ai from "./ai";
+import board from "./board";
+
+const debug = process.env.NODE_ENV !== "production";
 
 export default createStore({
-  state: {
-    shoppingList: [],
-    analysisResult: null,
-    alternatives: []
+  modules: {
+    ai,
+    board,
   },
-  mutations: {
-    setShoppingList(state, list) { state.shoppingList = list },
-    setAnalysisResult(state, result) { state.analysisResult = result },
-    setAlternatives(state, alternatives) { state.alternatives = alternatives }
-  },
-  actions: {
-    
-  }
-}) 
+  strict: debug,
+  plugins: debug ? [createLogger()] : [],
+});

@@ -5,6 +5,36 @@
 </template>
 
 <script>
+import { provide, ref } from 'vue';
+
+export default {
+  setup() {
+    const navigationStack = ref([]);
+    const currentBoardId = ref(null);
+    
+    const navigateToBoard = (boardId) => {
+      if (currentBoardId.value) {
+        navigationStack.value.push(currentBoardId.value);
+      }
+      currentBoardId.value = boardId;
+    };
+    
+    const navigateBack = () => {
+      if (navigationStack.value.length > 0) {
+        currentBoardId.value = navigationStack.value.pop();
+      } else {
+        currentBoardId.value = null;
+      }
+    };
+    
+    provide('boardNavigation', {
+      currentBoardId,
+      navigationStack,
+      navigateToBoard,
+      navigateBack
+    });
+  }
+}
 </script>
 
 <style lang="scss">
