@@ -14,11 +14,13 @@ export async function analyzeProductListAxios(payload) {
 
   return await api.post("ai/analyze-list", formData, {
     withCredentials: true,
+    params: payload.language ? { lang: payload.language } : undefined
   });
 }
 
 export async function createInformationTreeAxios(payload) {
   return await api.post("ai/create-information-tree", payload, {
     withCredentials: true,
+    params: payload.language ? { lang: payload.language } : undefined
   });
 }

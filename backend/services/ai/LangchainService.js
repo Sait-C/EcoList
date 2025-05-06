@@ -62,7 +62,7 @@ class LangchainService {
       }
 
       Shopping list:
-      ${productsList}
+      ${JSON.stringify(productsList)}
     `;
 
     const structuredLlm = this.model.withStructuredOutput(productsSchema);

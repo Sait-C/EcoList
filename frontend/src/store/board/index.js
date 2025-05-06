@@ -4,7 +4,8 @@ export default {
   state: {
     boards: [],
     currentBoardId: null,
-    navigationStack: []
+    navigationStack: [],
+    selectedProduct: null
   },
   
   mutations: {
@@ -32,6 +33,18 @@ export default {
     },
     REMOVE_BOARD(state, boardId) {
       state.boards = state.boards.filter(board => board.id !== boardId);
+    },
+    SET_NODE_LOADING(state, { nodeId, loading }) {
+      const node = state.boards.find(board => board.id === nodeId);
+      if (node) {
+        node.loading = loading;
+      }
+    },
+    UPDATE_NODE_CONTENT(state, { nodeId, content }) {
+      const node = state.boards.find(board => board.id === nodeId);
+      if (node) {
+        node.content = content;
+      }
     }
   },
   

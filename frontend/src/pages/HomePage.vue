@@ -1,47 +1,37 @@
 <template>
-  <div class="home">
+  <div class="home container">
     <main>
       <section class="hero">
-        <div class="hero-content">
-          <h1>Alışveriş Listenizin Etkisini Analiz Edin</h1>
-          <p>Bu platformda alışveriş listenizin çevresel etkisini analiz edebilir, daha sürdürülebilir seçimler yapabilirsiniz.</p>
-          <p class="hero-cta">🌱 Küçük değişimlerle büyük farklar yaratabilirsiniz. 🛒 Alışveriş listenizi dönüştürerek ne kadar sürdürülebilir olabileceğinizi görmek ister misiniz? Hadi başlayalım! 🚀</p>
-          <button class="primary-button">Hemen Başla</button>
+        <div class="hero-content-container">
+          <div class="hero-content">
+            <h1>Alışveriş Listenizin Etkisini Analiz Edin</h1>
+            <p class="hero-cta">
+              🌱 Küçük değişimlerle büyük farklar yaratabilirsiniz. 🛒 Alışveriş
+              listenizi dönüştürerek ne kadar sürdürülebilir olabileceğinizi
+              görmek ister misiniz? Hadi başlayalım! 🚀
+            </p>
+            <router-link :to="{ name: 'upload-list' }" class="primary-button"
+              >Hemen Başla</router-link
+            >
+          </div>
+          <div class="hero-image">
+            <img
+              src="@/assets/images/earth.png"
+              alt="Earth and checklist illustration"
+              class="earth-illustration"
+            />
+          </div>
         </div>
-        <div class="hero-image">
-          <img src="@/assets/earth-list.svg" alt="Earth and checklist illustration" class="earth-illustration" />
+        <div class="hero-footer">
+          <p class="hero-description">
+            * Bu platformda alışveriş listenizin çevresel etkisini analiz
+            edebilir, daha sürdürülebilir seçimler yapabilirsiniz.
+          </p>
         </div>
       </section>
 
       <section class="about-section">
         <div class="about-content">
-          <h2>Biz Kimiz?</h2>
-          <p class="about-description">
-            Eco, sürdürülebilir yaşamı destekleyen ve çevresel etkiyi azaltmayı hedefleyen bir platformdur. 
-            Amacımız, günlük alışveriş alışkanlıklarınızın çevreye olan etkisini görünür kılmak ve 
-            daha bilinçli seçimler yapmanıza yardımcı olmaktır.
-          </p>
-          
-          <div class="goals-grid">
-            <div class="goal-card">
-              <div class="goal-icon">🎯</div>
-              <h3>Misyonumuz</h3>
-              <p>Her bireyin çevresel etkisini anlamasını ve azaltmasını sağlamak için güçlü araçlar sunmak.</p>
-            </div>
-            
-            <div class="goal-card">
-              <div class="goal-icon">💡</div>
-              <h3>Vizyonumuz</h3>
-              <p>Sürdürülebilir tüketim alışkanlıklarını teşvik ederek daha yeşil bir gelecek yaratmak.</p>
-            </div>
-            
-            <div class="goal-card">
-              <div class="goal-icon">🤝</div>
-              <h3>Değerlerimiz</h3>
-              <p>Şeffaflık, bilimsel doğruluk ve sürdürülebilir yaşam pratiklerini desteklemek.</p>
-            </div>
-          </div>
-
           <div class="how-it-works-modern">
             <h3>Nasıl Çalışır?</h3>
             <div class="hiw-cards">
@@ -49,7 +39,10 @@
                 <div class="hiw-step-circle">1</div>
                 <div class="hiw-emoji">📝</div>
                 <div class="hiw-title">Alışveriş Listenizi Girin</div>
-                <div class="hiw-desc">Günlük alışveriş listenizi kolayca ekleyin veya geçmiş listelerinizi yükleyin</div>
+                <div class="hiw-desc">
+                  Günlük alışveriş listenizi kolayca ekleyin veya geçmiş
+                  listelerinizi yükleyin
+                </div>
                 <div class="hiw-badges">
                   <span>🖊️ Manuel Giriş</span>
                   <span>📷 Barkod Tarama</span>
@@ -60,7 +53,10 @@
                 <div class="hiw-step-circle">2</div>
                 <div class="hiw-emoji">🔍</div>
                 <div class="hiw-title">Detaylı Analiz</div>
-                <div class="hiw-desc">Yapay zeka destekli sistemimiz listenizi analiz eder ve çevresel etkisini hesaplar</div>
+                <div class="hiw-desc">
+                  Yapay zeka destekli sistemimiz listenizi analiz eder ve
+                  çevresel etkisini hesaplar
+                </div>
                 <div class="hiw-badges">
                   <span>🌱 Karbon Ayak İzi</span>
                   <span>💧 Su Tüketimi</span>
@@ -71,13 +67,55 @@
                 <div class="hiw-step-circle">3</div>
                 <div class="hiw-emoji">🌍</div>
                 <div class="hiw-title">Sürdürülebilir Alternatifler</div>
-                <div class="hiw-desc">Kişiselleştirilmiş öneriler ve çevre dostu alternatifler sunulur</div>
+                <div class="hiw-desc">
+                  Kişiselleştirilmiş öneriler ve çevre dostu alternatifler
+                  sunulur
+                </div>
                 <div class="hiw-badges">
                   <span>🔄 Ürün Değişimleri</span>
                   <span>💰 Tasarruf Hesaplaması</span>
                   <span>📊 Etki Karşılaştırması</span>
                 </div>
               </div>
+            </div>
+          </div>
+          <h2>Biz Kimiz?</h2>
+          <p class="about-description">
+            Eco, sürdürülebilir yaşamı destekleyen ve çevresel etkiyi azaltmayı
+            hedefleyen bir platformdur. Amacımız, günlük alışveriş
+            alışkanlıklarınızın çevreye olan etkisini görünür kılmak ve daha
+            bilinçli seçimler yapmanıza yardımcı olmaktır.
+          </p>
+
+          <div class="goals-grid">
+            <div class="goal-card">
+              <div class="goal-icon">🎯</div>
+              <h3>Misyonumuz</h3>
+              <p>
+                Kullanıcıların alışveriş listelerini analiz ederek, çevre dostu
+                alternatifler sunuyor ve her seçimin doğaya etkisini görünür
+                kılıyoruz.
+              </p>
+            </div>
+
+            <div class="goal-card">
+              <div class="goal-icon">💡</div>
+              <h3>Vizyonumuz</h3>
+              <p>
+                Sürdürülebilir alışveriş alışkanlıklarını teşvik eden lider bir
+                platform olarak, daha yeşil ve sağlıklı bir gelecek inşa etmeyi
+                hedefliyoruz.
+              </p>
+            </div>
+
+            <div class="goal-card">
+              <div class="goal-icon">🤝</div>
+              <h3>Değerlerimiz</h3>
+              <p>
+                Şeffaflık, bilimsellik ve toplumsal sorumluluk ilkeleriyle;
+                sürdürülebilir yaşamı herkes için erişilebilir kılmayı
+                hedefliyoruz.
+              </p>
             </div>
           </div>
         </div>
@@ -93,7 +131,10 @@
             </div>
             <h4>Plastik Şişe → Cam Şişe</h4>
             <p>%100 daha az plastik atık</p>
-            <p class="alternative-detail">Yeniden kullanılabilir cam şişe ile yılda 365 plastik şişe atığını önleyin</p>
+            <p class="alternative-detail">
+              Yeniden kullanılabilir cam şişe ile yılda 365 plastik şişe atığını
+              önleyin
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -103,7 +144,10 @@
             </div>
             <h4>Kırmızı Et → Mercimek</h4>
             <p>%70 daha az karbon emisyonu</p>
-            <p class="alternative-detail">1 kg kırmızı et yerine mercimek tüketerek 15 kg CO₂ tasarrufu sağlayın</p>
+            <p class="alternative-detail">
+              1 kg kırmızı et yerine mercimek tüketerek 15 kg CO₂ tasarrufu
+              sağlayın
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -113,7 +157,10 @@
             </div>
             <h4>Araba → Bisiklet</h4>
             <p>%90 daha az karbon ayak izi</p>
-            <p class="alternative-detail">5 km'lik mesafede araba yerine bisiklet kullanarak 2.5 kg CO₂ tasarrufu</p>
+            <p class="alternative-detail">
+              5 km'lik mesafede araba yerine bisiklet kullanarak 2.5 kg CO₂
+              tasarrufu
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -123,7 +170,10 @@
             </div>
             <h4>Plastik Poşet → Bez Çanta</h4>
             <p>%95 daha az plastik kullanımı</p>
-            <p class="alternative-detail">Tek kullanımlık poşetler yerine bez çanta ile yılda 500 plastik poşeti önleyin</p>
+            <p class="alternative-detail">
+              Tek kullanımlık poşetler yerine bez çanta ile yılda 500 plastik
+              poşeti önleyin
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -133,7 +183,9 @@
             </div>
             <h4>Normal Ampul → LED</h4>
             <p>%85 daha az enerji tüketimi</p>
-            <p class="alternative-detail">LED ampul kullanarak yılda 50 kg CO₂ emisyonunu azaltın</p>
+            <p class="alternative-detail">
+              LED ampul kullanarak yılda 50 kg CO₂ emisyonunu azaltın
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -143,7 +195,10 @@
             </div>
             <h4>Şişe Su → Musluk Suyu</h4>
             <p>%80 daha az plastik atık</p>
-            <p class="alternative-detail">Filtreli su şişesi kullanarak yılda 300 plastik şişe atığını önleyin</p>
+            <p class="alternative-detail">
+              Filtreli su şişesi kullanarak yılda 300 plastik şişe atığını
+              önleyin
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -153,7 +208,9 @@
             </div>
             <h4>Kağıt Havlu → Bez Havlu</h4>
             <p>%75 daha az ağaç tüketimi</p>
-            <p class="alternative-detail">Bez havlu kullanarak yılda 1 ağacın kesilmesini önleyin</p>
+            <p class="alternative-detail">
+              Bez havlu kullanarak yılda 1 ağacın kesilmesini önleyin
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -163,7 +220,9 @@
             </div>
             <h4>Tek Kullanımlık Bardak → Termos</h4>
             <p>%85 daha az atık</p>
-            <p class="alternative-detail">Termos kullanarak yılda 250 tek kullanımlık bardak atığını önleyin</p>
+            <p class="alternative-detail">
+              Termos kullanarak yılda 250 tek kullanımlık bardak atığını önleyin
+            </p>
           </div>
 
           <div class="alternative-item">
@@ -173,7 +232,9 @@
             </div>
             <h4>Kimyasal Temizleyici → Doğal Temizleyici</h4>
             <p>%90 daha az kimyasal atık</p>
-            <p class="alternative-detail">Sirke ve limon kullanarak hem doğayı hem bütçenizi koruyun</p>
+            <p class="alternative-detail">
+              Sirke ve limon kullanarak hem doğayı hem bütçenizi koruyun
+            </p>
           </div>
         </div>
       </section>
@@ -278,18 +339,27 @@
 export default {
   data() {
     return {
-      isFlipped: false
-    }
+      isFlipped: false,
+    };
   },
   methods: {
     toggleFlip() {
       this.isFlipped = !this.isFlipped;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
+.hero-description {
+  text-align: left;
+}
+
+.hero-footer {
+  width: 100%;
+  text-align: left;
+}
+
 .home {
   padding: 2rem;
 }
@@ -297,29 +367,35 @@ export default {
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 4rem;
+  flex-direction: column;
+}
+
+.hero-content-container {
+  display: flex;
+  align-items: center;
 }
 
 .hero-content {
   flex: 1;
-  padding-right: 2rem;
+  padding-inline: 2rem;
 }
 
 .hero-image {
   flex: 1;
   text-align: center;
+  max-width: 500px;
 }
 
 .earth-illustration {
-  max-width: 300px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .alternatives-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 }
 
 .alternative-item {
@@ -361,6 +437,10 @@ h4 {
   gap: 2rem;
   margin-bottom: 1rem;
   font-size: 2rem;
+}
+
+.eco-tips {
+  padding-top: 4rem;
 }
 
 .tips-grid {
@@ -405,7 +485,7 @@ h4 {
 
 .tip-list li:before {
   content: "•";
-  color: #4CAF50;
+  color: #4caf50;
   position: absolute;
   left: 0;
   font-weight: bold;
@@ -415,13 +495,13 @@ h4 {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid #eee;
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: 500;
   font-size: 0.9rem;
 }
 
 .primary-button {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -459,9 +539,8 @@ p {
 }
 
 .about-section {
-  padding: 4rem 0;
   background-color: #f8f9fa;
-  margin: 2rem 0;
+  margin: 4rem 0;
 }
 
 .about-content {
@@ -516,10 +595,10 @@ p {
 }
 
 .hiw-cards {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  flex-wrap: wrap;
+  margin-bottom: 4rem;
 }
 
 .hiw-card {
@@ -528,7 +607,7 @@ p {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 2.2rem 1.5rem 1.7rem 1.5rem;
-  max-width: 320px;
+  max-width: 350px;
   min-width: 260px;
   display: flex;
   flex-direction: column;
@@ -544,7 +623,7 @@ p {
 .hiw-step-circle {
   width: 38px;
   height: 38px;
-  background: #4CAF50;
+  background: #4caf50;
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -556,7 +635,7 @@ p {
   top: -19px;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.10);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
   border: 3px solid #fff;
 }
 
@@ -612,7 +691,7 @@ p {
 
 .hero-cta {
   font-size: 1.1rem;
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: 500;
   margin: 1.5rem 0;
   line-height: 1.8;
@@ -642,7 +721,8 @@ p {
   transform: rotateY(180deg);
 }
 
-.front, .back {
+.front,
+.back {
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -671,7 +751,7 @@ p {
 
 .diagram-title {
   font-size: 1.5rem;
-  color: #4CAF50;
+  color: #4caf50;
   text-align: center;
   margin-bottom: 1.5rem;
   font-weight: 600;
@@ -687,7 +767,7 @@ p {
   font-weight: 600;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #4CAF50;
+  border-bottom: 2px solid #4caf50;
 }
 
 .sub-branches {
@@ -703,7 +783,7 @@ p {
 }
 
 .sub-title {
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -724,7 +804,7 @@ p {
 
 .sub-branch li:before {
   content: "•";
-  color: #4CAF50;
+  color: #4caf50;
   position: absolute;
   left: 0;
 }
@@ -733,7 +813,7 @@ p {
   .sub-branches {
     grid-template-columns: 1fr;
   }
-  
+
   .back {
     max-height: 500px;
   }

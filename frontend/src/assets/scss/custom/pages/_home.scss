@@ -37,7 +37,7 @@
 
   .hero {
     display: flex;
-    padding: 6rem 4rem;
+    padding: 2rem 2rem;
     align-items: center;
     gap: 6rem;
     background: $background-white;
@@ -92,10 +92,6 @@
       background: $primary-green-dark;
       transform: translateY(-2px);
     }
-  }
-
-  .analysis-section, .alternatives-section {
-    padding: 6rem 4rem;
   }
 
   h2 {

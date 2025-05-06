@@ -116,20 +116,6 @@ export default {
   gap: 1rem;
 }
 
-.back-button {
-  padding: 0.5rem 1rem;
-  background: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.back-button:hover {
-  background: #357abd;
-}
-
 .board-content {
   position: relative;
   width: 100%;

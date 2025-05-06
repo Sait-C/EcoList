@@ -13,6 +13,8 @@ exports.analyzeProductsList = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("Please provide a shopping list or image", 400));
   }
 
+  console.log(productsList);
+
   let result;
   if (req.files && req.files.file) {
     result = await aiService.analyzeImageToGetProducts(req.files.file, language);

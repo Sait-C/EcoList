@@ -42,7 +42,7 @@ const toast = useToast();
 
 const formData = reactive({
   file: null,
-  manualList: [],
+  productsList: [],
   language: 'tr'
 });
 
@@ -51,10 +51,10 @@ const rules = {
   file: {
     required: helpers.withMessage(
       'Please upload a file or enter items manually',
-      helpers.withParams({}, (value) => value || formData.manualList.length > 0)
+      helpers.withParams({}, (value) => value || formData.productsList.length > 0)
     )
   },
-  manualList: {
+  productsList: {
     required: helpers.withMessage(
       'Please upload a file or enter items manually',
       helpers.withParams({}, (value) => value.length > 0 || formData.file)
@@ -66,16 +66,16 @@ const rules = {
 const v$ = useVuelidate(rules, formData);
 
 const canAnalyze = computed(() => {
-  return formData.file || formData.manualList.length > 0;
+  return formData.file || formData.productsList.length > 0;
 });
 
 const handleFileSelect = (file) => {
   formData.file = file;
-  formData.manualList = []; // Clear manual list when file is selected
+  formData.productsList = []; // Clear manual list when file is selected
 };
 
 const handleListUpdate = (list) => {
-  formData.manualList = list;
+  formData.productsList = list;
   formData.file = null; // Clear file when manual list is updated
 };
 
@@ -96,7 +96,7 @@ const { isLoading: isAnalyzing, execute: handleSubmit } = useAsyncState(
     try {
       await store.dispatch('ai/analyzeProductListAxios', {
         file: formData.file,
-        items: formData.manualList,
+        productsList: formData.productsList,
         language: formData.language
       });
       

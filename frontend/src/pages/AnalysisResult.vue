@@ -4,13 +4,13 @@
       <div class="analysis-list">
         <h2>Analiz Detayları</h2>
         <AnalysisListItem
-          v-for="item in analysisItems"
-          :key="item.id"
-          :id="item.id"
-          :title="item.title"
-          :description="item.description"
-          :status="item.status"
-          :selected="selectedItemId === item.id"
+          v-for="(item, index) in productsList"
+          :key="index"
+          :id="index"
+          :title="item.name"
+          :description="item.reason"
+          :status="item.sustainabilityScore >= 5 ? 'success' : 'error'"
+          :selected="selectedItemId === index"
           @select="handleSelect"
         />
       </div>
@@ -26,13 +26,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useStore } from 'vuex';
 import BoardComponent from '@/components/board/BoardComponent.vue';
 import AnalysisListItem from '@/components/analysis/AnalysisListItem.vue';
 
 const store = useStore();
 const selectedItemId = ref(null);
+const productsList = computed(() => store.getters['ai/getProductList']);
+const boards = ref([]);
 
 const handleSelect = (id) => {
   selectedItemId.value = id === selectedItemId.value ? null : id;
@@ -42,156 +44,61 @@ const currentNode = computed(() => {
   return store.getters['board/currentBoard'];
 });
 
-
-// Sample board data with parent-child relationships
-const boards = [
-  // Root level boards
-  {
-    id: 1,
-    title: 'Cam Şişe',
-    topics: ['Çevresel Zararlar', 'Geri Dönüşümü', 'Üretim Maliyeti'],
-    x: 200,
-    y: 150,
-    parentId: null
-  },
-  {
-    id: 2,
-    title: 'Plastik Şişe',
-    topics: ['Çevresel Zararlar', 'Geri Dönüşümü', 'Üretim Maliyeti'],
-    x: 400,
-    y: 150,
-    parentId: null
-  },
-  {
-    id: 3,
-    title: 'Kağıt Poşet',
-    topics: ['Sürdürülebilirlik', 'Geri Dönüşüm', 'Maliyet'],
-    x: 600,
-    y: 150,
-    parentId: null
-  },
-  
-  // Child boards for Cam Şişe (id: 1)
-  {
-    id: 101,
-    title: 'Üretim',
-    topics: ['Enerji Tüketimi', 'Hammadde'],
-    x: 150,
-    y: 200,
-    parentId: 1
-  },
-  {
-    id: 102,
-    title: 'Geri Dönüşüm',
-    topics: ['Süreç', 'Verimlilik'],
-    x: 350,
-    y: 200,
-    parentId: 1
-  },
-  {
-    id: 103,
-    title: 'Çevresel Etki',
-    topics: ['CO2 Emisyonu', 'Atık Yönetimi'],
-    x: 550,
-    y: 200,
-    parentId: 1
-  },
-  
-  // Child boards for Plastik Şişe (id: 2)
-  {
-    id: 201,
-    title: 'Üretim',
-    topics: ['Petrol Tüketimi', 'Enerji'],
-    x: 150,
-    y: 200,
-    parentId: 2
-  },
-  {
-    id: 202,
-    title: 'Geri Dönüşüm',
-    topics: ['Zorluklar', 'Oranlar'],
-    x: 350,
-    y: 200,
-    parentId: 2
-  },
-  {
-    id: 203,
-    title: 'Çevresel Etki',
-    topics: ['Okyanus Kirliliği', 'Mikroplastikler'],
-    x: 550,
-    y: 200,
-    parentId: 2
-  },
-  
-  // Child boards for Kağıt Poşet (id: 3)
-  {
-    id: 301,
-    title: 'Üretim',
-    content: 'Kağıt poşet üretiminde kullanılan hammadde ve enerji tüketimi analizi',
-    cardCount: 2,
-    x: 150,
-    y: 200,
-    parentId: 3
-  },
-  {
-    id: 302,
-    title: 'Geri Dönüşüm',
-    content: 'Kağıt poşetlerin geri dönüşüm süreçleri ve verimliliği',
-    cardCount: 1,
-    x: 350,
-    y: 200,
-    parentId: 3
-  },
-  {
-    id: 303,
-    title: 'Çevresel Etki',
-    content: 'Kağıt poşetlerin çevresel etki değerlendirmesi ve karbon ayak izi',
-    cardCount: 3,
-    x: 550,
-    y: 200,
-    parentId: 3
-  },
-  
-  // Grandchild boards for Cam Şişe > Üretim (id: 101)
-  {
-    id: 1011,
-    title: 'Enerji Kaynakları',
-    topics: ['Yenilenebilir', 'Fosil'],
-    content: 'Kağıt poşetlerin geri dönüşüm süreçleri ve verimliliği',
-    x: 200,
-    y: 150,
-    parentId: 101
-  },
-  {
-    id: 1012,
-    title: 'Hammadde Kaynakları',
-    content: 'Kağıt poşetlerin geri dönüşüm süreçleri ve verimliliği',
-    topics: ['Kum', 'Soda'],
-    x: 400,
-    y: 150,
-    parentId: 101
+// Generate boards when a product is selected
+watch(selectedItemId, (newId) => {
+  if (newId === null) {
+    boards.value = [];
+    store.commit('board/SET_BOARDS', []);
+    return;
   }
-];
-
-onMounted(() => {
-  // Initialize the store with board data
-  store.commit('board/SET_BOARDS', boards);
+  
+  const selectedProduct = productsList.value[newId];
+  if (!selectedProduct) return;
+  
+  // Create board nodes from alternatives
+  const generatedBoards = [];
+  let idCounter = 1;
+  
+  // Root level boards (alternatives)
+  selectedProduct.alternatives.forEach((alternative, index) => {
+    const alternativeId = idCounter++;
+    
+    generatedBoards.push({
+      id: alternativeId,
+      title: alternative.name,
+      sustainabilityScore: alternative.sustainabilityScore,
+      reason: alternative.reason,
+      image: alternative.imageBase64,
+      x: 200 + (index * 300),
+      y: 150,
+      parentId: null
+    });
+    
+    // Child boards (topics)
+    if (alternative.topics && alternative.topics.length > 0) {
+      alternative.topics.forEach((topic, topicIndex) => {
+        generatedBoards.push({
+          id: idCounter++,
+          title: topic,
+          content: '', // Initialize with empty content
+          x: 150 + (topicIndex * 200),
+          y: 200,
+          parentId: alternativeId,
+          loading: false // Add loading state
+        });
+      });
+    }
+  });
+  
+  boards.value = generatedBoards;
+  store.commit('board/SET_BOARDS', generatedBoards);
 });
 
-const analysisItems = ref([
-  {
-    id: 1,
-    title: 'Plastik Şişe',
-    description: 'Listenizde bulunan ürünlerin %75\'i geri dönüştürülebilir malzemelerden oluşuyor.',
-    status: 'success'
-  },
-  {
-    id: 2,
-    title: 'Naylon Poşet',
-    description: 'Seçilen ürünlerin karbon ayak izi ortalamanın üzerinde. Alternatif ürünler önerildi.',
-    status: 'error'
-  },
-]);
+onMounted(() => {
+  // Initialize the store with empty boards
+  store.commit('board/SET_BOARDS', []);
+});
+
 </script>
 
 <style lang="scss" scoped>
